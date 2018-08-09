@@ -13,7 +13,7 @@ try:
 		try:
 			try:
 				with open("authToken.txt", "r") as token:
-					authToken = token.read()
+					authToken = token.read().replace("\n","")
 					if not authToken:
 						client = LINE()
 						with open("authToken.txt","w") as token:

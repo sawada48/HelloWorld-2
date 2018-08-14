@@ -31,7 +31,7 @@ $ python3 helloworld.py
 for the first time running python helloworld.py will be an error
 
 ## LINE
-[HelloWorld Square](https://line.me/ti/g2/LPYXUFI1YE)
+[HelloWorld Square](https://line.me/ti/g2/JGUODBE4RE)
 
 ## Discord
 [HelloWorld](https://discord.gg/5jqbutB)

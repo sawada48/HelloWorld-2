@@ -21,9 +21,11 @@ botStart = time.time()
 msg_dict = {}
 
 Bots=["ub3b250860aa7fc0b1330e3f5d02aa07a"]
-admin=["u77cb218d07fddacaa5ee49f2f27cd0bb"]
+admin=["u77cb218d07fddacaa5ee49f2f27cd0bb","ube19f16b3ad18adf1705ef0c3cc639d6"]
 settings = {
     "autoJoin": True,
+    "autoRead": True,
+    "autoRespon": True,
     "autoJoinTicket": True,
     "checkContact": False,
     "checkPost": False,

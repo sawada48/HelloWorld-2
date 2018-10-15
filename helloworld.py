@@ -11,7 +11,7 @@ from googletrans import Translator
 from humanfriendly import format_timespan, format_size, format_number, format_length
 import time, random, sys, json, codecs, threading, glob, re, string, os, requests, six, ast, pytz, urllib, urllib3, urllib.parse, traceback, atexit
 
-client = LINE("ExSRnYHxt6jcSLGC5led.RHvZG+j2AioYB2x4uY5/Vq.cCnqKjDWVLFvhhgIV+ulmXc+AcywHBpytw3k2RMcVr8=")
+client = LINE("ExLnJkkpXl3WyqX9UIca.S7jqHGQN+aStmop10cQGEG.gFAZrn5sLiJViOABQXXL/DtVewf/juSDt17lO4KXDwI=")
 clientMid = client.profile.mid
 clientProfile = client.getProfile()
 clientSettings = client.getSettings()
@@ -20,14 +20,10 @@ botStart = time.time()
 
 msg_dict = {}
 
-Bots=["uae157383f2766883b26f65f8532e7ebd"]
-admin=["uae157383f2766883b26f65f8532e7ebd"]
+Bots=["ub3b250860aa7fc0b1330e3f5d02aa07a"]
+admin=["u77cb218d07fddacaa5ee49f2f27cd0bb"]
 settings = {
-    "autoAdd": False,
     "autoJoin": True,
-    "autoLeave": False,
-    "autoRead": False,
-    "autoRespon": False,
     "autoJoinTicket": True,
     "checkContact": False,
     "checkPost": False,
@@ -67,179 +63,7 @@ read = {
     "readTime": {}
 }
 
-list_language = {
-    "list_textToSpeech": {
-        "id": "Indonesia",
-        "af" : "Afrikaans",
-        "sq" : "Albanian",
-        "ar" : "Arabic",
-        "hy" : "Armenian",
-        "bn" : "Bengali",
-        "ca" : "Catalan",
-        "zh" : "Chinese",
-        "zh-cn" : "Chinese (Mandarin/China)",
-        "zh-tw" : "Chinese (Mandarin/Taiwan)",
-        "zh-yue" : "Chinese (Cantonese)",
-        "hr" : "Croatian",
-        "cs" : "Czech",
-        "da" : "Danish",
-        "nl" : "Dutch",
-        "en" : "English",
-        "en-au" : "English (Australia)",
-        "en-uk" : "English (United Kingdom)",
-        "en-us" : "English (United States)",
-        "eo" : "Esperanto",
-        "fi" : "Finnish",
-        "fr" : "French",
-        "de" : "German",
-        "el" : "Greek",
-        "hi" : "Hindi",
-        "hu" : "Hungarian",
-        "is" : "Icelandic",
-        "id" : "Indonesian",
-        "it" : "Italian",
-        "ja" : "Japanese",
-        "km" : "Khmer (Cambodian)",
-        "ko" : "Korean",
-        "la" : "Latin",
-        "lv" : "Latvian",
-        "mk" : "Macedonian",
-        "no" : "Norwegian",
-        "pl" : "Polish",
-        "pt" : "Portuguese",
-        "ro" : "Romanian",
-        "ru" : "Russian",
-        "sr" : "Serbian",
-        "si" : "Sinhala",
-        "sk" : "Slovak",
-        "es" : "Spanish",
-        "es-es" : "Spanish (Spain)",
-        "es-us" : "Spanish (United States)",
-        "sw" : "Swahili",
-        "sv" : "Swedish",
-        "ta" : "Tamil",
-        "th" : "Thai",
-        "tr" : "Turkish",
-        "uk" : "Ukrainian",
-        "vi" : "Vietnamese",
-        "cy" : "Welsh"
-    },
-    "list_translate": {    
-        "af": "afrikaans",
-        "sq": "albanian",
-        "am": "amharic",
-        "ar": "arabic",
-        "hy": "armenian",
-        "az": "azerbaijani",
-        "eu": "basque",
-        "be": "belarusian",
-        "bn": "bengali",
-        "bs": "bosnian",
-        "bg": "bulgarian",
-        "ca": "catalan",
-        "ceb": "cebuano",
-        "ny": "chichewa",
-        "zh-cn": "chinese (simplified)",
-        "zh-tw": "chinese (traditional)",
-        "co": "corsican",
-        "hr": "croatian",
-        "cs": "czech",
-        "da": "danish",
-        "nl": "dutch",
-        "en": "english",
-        "eo": "esperanto",
-        "et": "estonian",
-        "tl": "filipino",
-        "fi": "finnish",
-        "fr": "french",
-        "fy": "frisian",
-        "gl": "galician",
-        "ka": "georgian",
-        "de": "german",
-        "el": "greek",
-        "gu": "gujarati",
-        "ht": "haitian creole",
-        "ha": "hausa",
-        "haw": "hawaiian",
-        "iw": "hebrew",
-        "hi": "hindi",
-        "hmn": "hmong",
-        "hu": "hungarian",
-        "is": "icelandic",
-        "ig": "igbo",
-        "id": "indonesian",
-        "ga": "irish",
-        "it": "italian",
-        "ja": "japanese",
-        "jw": "javanese",
-        "kn": "kannada",
-        "kk": "kazakh",
-        "km": "khmer",
-        "ko": "korean",
-        "ku": "kurdish (kurmanji)",
-        "ky": "kyrgyz",
-        "lo": "lao",
-        "la": "latin",
-        "lv": "latvian",
-        "lt": "lithuanian",
-        "lb": "luxembourgish",
-        "mk": "macedonian",
-        "mg": "malagasy",
-        "ms": "malay",
-        "ml": "malayalam",
-        "mt": "maltese",
-        "mi": "maori",
-        "mr": "marathi",
-        "mn": "mongolian",
-        "my": "myanmar (burmese)",
-        "ne": "nepali",
-        "no": "norwegian",
-        "ps": "pashto",
-        "fa": "persian",
-        "pl": "polish",
-        "pt": "portuguese",
-        "pa": "punjabi",
-        "ro": "romanian",
-        "ru": "russian",
-        "sm": "samoan",
-        "gd": "scots gaelic",
-        "sr": "serbian",
-        "st": "sesotho",
-        "sn": "shona",
-        "sd": "sindhi",
-        "si": "sinhala",
-        "sk": "slovak",
-        "sl": "slovenian",
-        "so": "somali",
-        "es": "spanish",
-        "su": "sundanese",
-        "sw": "swahili",
-        "sv": "swedish",
-        "tg": "tajik",
-        "ta": "tamil",
-        "te": "telugu",
-        "th": "thai",
-        "tr": "turkish",
-        "uk": "ukrainian",
-        "ur": "urdu",
-        "uz": "uzbek",
-        "vi": "vietnamese",
-        "cy": "welsh",
-        "xh": "xhosa",
-        "yi": "yiddish",
-        "yo": "yoruba",
-        "zu": "zulu",
-        "fil": "Filipino",
-        "he": "Hebrew"
-    }
-}
 
-try:
-    with open("Log_data.json","r",encoding="utf_8_sig") as f:
-        msg_dict = json.loads(f.read())
-except:
-    print("Couldn't read Log data")
-    
 settings["myProfile"]["displayName"] = clientProfile.displayName
 settings["myProfile"]["statusMessage"] = clientProfile.statusMessage
 settings["myProfile"]["pictureStatus"] = clientProfile.pictureStatus
@@ -342,8 +166,6 @@ def helpmessage():
         key = ''
     helpMessage =   "╔══[ Help Message ]" + "\n" + \
                     "╠ " + key + "Help" + "\n" + \
-                    "╠ " + key + "Translate" + "\n" + \
-                    "╠ " + key + "TTS" + "\n" + \
                     "╠══[ Status Command ]" + "\n" + \
                     "╠ " + key + "About" + "\n" + \
                     "╠ " + key + "Restart" + "\n" + \
@@ -354,12 +176,8 @@ def helpmessage():
                     "╠ SetKey「On/Off」" + "\n" + \
                     "╠══[ Settings Command ]" + "\n" + \
                     "╠ " + key + "Protect「On/Off」" + "\n" + \
-                    "╠ " + key + "AutoAdd「On/Off」" + "\n" + \
                     "╠ " + key + "AutoJoin「On/Off」" + "\n" + \
                     "╠ " + key + "AutoJoinTicket「On/Off」" + "\n" + \
-                    "╠ " + key + "AutoLeave「On/Off」" + "\n" + \
-                    "╠ " + key + "AutoRead「On/Off」" + "\n" + \
-                    "╠ " + key + "AutoRespon「On/Off」" + "\n" + \
                     "╠ " + key + "CheckContact「On/Off」" + "\n" + \
                     "╠ " + key + "CheckPost「On/Off」" + "\n" + \
                     "╠ " + key + "CheckSticker「On/Off」" + "\n" + \
@@ -374,7 +192,6 @@ def helpmessage():
                     "╠ " + key + "MyPicture" + "\n" + \
                     "╠ " + key + "MyVideoProfile" + "\n" + \
                     "╠ " + key + "MyCover" + "\n" + \
-                    "╠ " + key + "StealContact「Mention」" + "\n" + \
                     "╠ " + key + "StealMid「Mention」" + "\n" + \
                     "╠ " + key + "StealName「Mention」" + "\n" + \
                     "╠ " + key + "StealBio「Mention」" + "\n" + \
@@ -401,190 +218,8 @@ def helpmessage():
                     "╠ " + key + "Mention" + "\n" + \
                     "╠ " + key + "Lurking「On/Off/Reset」" + "\n" + \
                     "╠ " + key + "Lurking" + "\n" + \
-                    "╠══[ Media Command ]" + "\n" + \
-                    "╠ " + key + "SearchMusic 「Search」" + "\n" + \
-                    "╠ " + key + "SearchImage 「Search」" + "\n" + \
                     "╚══[ Copyright @Zero-Cool404 ]"
     return helpMessage
-
-def helptexttospeech():
-    if settings['setKey'] == True:
-        key = settings['keyCommand']
-    else:
-        key = ''
-    helpTextToSpeech =  "╔══[ Help TextToSpeech ]" + "\n" + \
-                        "╠ " + key + "af : Afrikaans" + "\n" + \
-                        "╠ " + key + "sq : Albanian" + "\n" + \
-                        "╠ " + key + "ar : Arabic" + "\n" + \
-                        "╠ " + key + "hy : Armenian" + "\n" + \
-                        "╠ " + key + "bn : Bengali" + "\n" + \
-                        "╠ " + key + "ca : Catalan" + "\n" + \
-                        "╠ " + key + "zh : Chinese" + "\n" + \
-                        "╠ " + key + "zhcn : Chinese (Mandarin/China)" + "\n" + \
-                        "╠ " + key + "zhtw : Chinese (Mandarin/Taiwan)" + "\n" + \
-                        "╠ " + key + "zhyue : Chinese (Cantonese)" + "\n" + \
-                        "╠ " + key + "hr : Croatian" + "\n" + \
-                        "╠ " + key + "cs : Czech" + "\n" + \
-                        "╠ " + key + "da : Danish" + "\n" + \
-                        "╠ " + key + "nl : Dutch" + "\n" + \
-                        "╠ " + key + "en : English" + "\n" + \
-                        "╠ " + key + "enau : English (Australia)" + "\n" + \
-                        "╠ " + key + "enuk : English (United Kingdom)" + "\n" + \
-                        "╠ " + key + "enus : English (United States)" + "\n" + \
-                        "╠ " + key + "eo : Esperanto" + "\n" + \
-                        "╠ " + key + "fi : Finnish" + "\n" + \
-                        "╠ " + key + "fr : French" + "\n" + \
-                        "╠ " + key + "de : German" + "\n" + \
-                        "╠ " + key + "el : Greek" + "\n" + \
-                        "╠ " + key + "hi : Hindi" + "\n" + \
-                        "╠ " + key + "hu : Hungarian" + "\n" + \
-                        "╠ " + key + "is : Icelandic" + "\n" + \
-                        "╠ " + key + "id : Indonesian" + "\n" + \
-                        "╠ " + key + "it : Italian" + "\n" + \
-                        "╠ " + key + "ja : Japanese" + "\n" + \
-                        "╠ " + key + "km : Khmer (Cambodian)" + "\n" + \
-                        "╠ " + key + "ko : Korean" + "\n" + \
-                        "╠ " + key + "la : Latin" + "\n" + \
-                        "╠ " + key + "lv : Latvian" + "\n" + \
-                        "╠ " + key + "mk : Macedonian" + "\n" + \
-                        "╠ " + key + "no : Norwegian" + "\n" + \
-                        "╠ " + key + "pl : Polish" + "\n" + \
-                        "╠ " + key + "pt : Portuguese" + "\n" + \
-                        "╠ " + key + "ro : Romanian" + "\n" + \
-                        "╠ " + key + "ru : Russian" + "\n" + \
-                        "╠ " + key + "sr : Serbian" + "\n" + \
-                        "╠ " + key + "si : Sinhala" + "\n" + \
-                        "╠ " + key + "sk : Slovak" + "\n" + \
-                        "╠ " + key + "es : Spanish" + "\n" + \
-                        "╠ " + key + "eses : Spanish (Spain)" + "\n" + \
-                        "╠ " + key + "esus : Spanish (United States)" + "\n" + \
-                        "╠ " + key + "sw : Swahili" + "\n" + \
-                        "╠ " + key + "sv : Swedish" + "\n" + \
-                        "╠ " + key + "ta : Tamil" + "\n" + \
-                        "╠ " + key + "th : Thai" + "\n" + \
-                        "╠ " + key + "tr : Turkish" + "\n" + \
-                        "╠ " + key + "uk : Ukrainian" + "\n" + \
-                        "╠ " + key + "vi : Vietnamese" + "\n" + \
-                        "╠ " + key + "cy : Welsh" + "\n" + \
-                        "╚══[ Copyright @Zero-Cool404 ]" + "\n" + "\n\n" + \
-                        "Contoh : " + key + "say-id Hay"
-    return helpTextToSpeech
-
-def helptranslate():
-    if settings['setKey'] == True:
-        key = settings['keyCommand']
-    else:
-        key = ''
-    helpTranslate = "╔══[ Help Translate ]" + "\n" + \
-                    "╠ " + key + "af : afrikaans" + "\n" + \
-                    "╠ " + key + "sq : albanian" + "\n" + \
-                    "╠ " + key + "am : amharic" + "\n" + \
-                    "╠ " + key + "ar : arabic" + "\n" + \
-                    "╠ " + key + "hy : armenian" + "\n" + \
-                    "╠ " + key + "az : azerbaijani" + "\n" + \
-                    "╠ " + key + "eu : basque" + "\n" + \
-                    "╠ " + key + "be : belarusian" + "\n" + \
-                    "╠ " + key + "bn : bengali" + "\n" + \
-                    "╠ " + key + "bs : bosnian" + "\n" + \
-                    "╠ " + key + "bg : bulgarian" + "\n" + \
-                    "╠ " + key + "ca : catalan" + "\n" + \
-                    "╠ " + key + "ceb : cebuano" + "\n" + \
-                    "╠ " + key + "ny : chichewa" + "\n" + \
-                    "╠ " + key + "zhcn : chinese (simplified)" + "\n" + \
-                    "╠ " + key + "zhtw : chinese (traditional)" + "\n" + \
-                    "╠ " + key + "co : corsican" + "\n" + \
-                    "╠ " + key + "hr : croatian" + "\n" + \
-                    "╠ " + key + "cs : czech" + "\n" + \
-                    "╠ " + key + "da : danish" + "\n" + \
-                    "╠ " + key + "nl : dutch" + "\n" + \
-                    "╠ " + key + "en : english" + "\n" + \
-                    "╠ " + key + "eo : esperanto" + "\n" + \
-                    "╠ " + key + "et : estonian" + "\n" + \
-                    "╠ " + key + "tl : filipino" + "\n" + \
-                    "╠ " + key + "fi : finnish" + "\n" + \
-                    "╠ " + key + "fr : french" + "\n" + \
-                    "╠ " + key + "fy : frisian" + "\n" + \
-                    "╠ " + key + "gl : galician" + "\n" + \
-                    "╠ " + key + "ka : georgian" + "\n" + \
-                    "╠ " + key + "de : german" + "\n" + \
-                    "╠ " + key + "el : greek" + "\n" + \
-                    "╠ " + key + "gu : gujarati" + "\n" + \
-                    "╠ " + key + "ht : haitian creole" + "\n" + \
-                    "╠ " + key + "ha : hausa" + "\n" + \
-                    "╠ " + key + "haw : hawaiian" + "\n" + \
-                    "╠ " + key + "iw : hebrew" + "\n" + \
-                    "╠ " + key + "hi : hindi" + "\n" + \
-                    "╠ " + key + "hmn : hmong" + "\n" + \
-                    "╠ " + key + "hu : hungarian" + "\n" + \
-                    "╠ " + key + "is : icelandic" + "\n" + \
-                    "╠ " + key + "ig : igbo" + "\n" + \
-                    "╠ " + key + "id : indonesian" + "\n" + \
-                    "╠ " + key + "ga : irish" + "\n" + \
-                    "╠ " + key + "it : italian" + "\n" + \
-                    "╠ " + key + "ja : japanese" + "\n" + \
-                    "╠ " + key + "jw : javanese" + "\n" + \
-                    "╠ " + key + "kn : kannada" + "\n" + \
-                    "╠ " + key + "kk : kazakh" + "\n" + \
-                    "╠ " + key + "km : khmer" + "\n" + \
-                    "╠ " + key + "ko : korean" + "\n" + \
-                    "╠ " + key + "ku : kurdish (kurmanji)" + "\n" + \
-                    "╠ " + key + "ky : kyrgyz" + "\n" + \
-                    "╠ " + key + "lo : lao" + "\n" + \
-                    "╠ " + key + "la : latin" + "\n" + \
-                    "╠ " + key + "lv : latvian" + "\n" + \
-                    "╠ " + key + "lt : lithuanian" + "\n" + \
-                    "╠ " + key + "lb : luxembourgish" + "\n" + \
-                    "╠ " + key + "mk : macedonian" + "\n" + \
-                    "╠ " + key + "mg : malagasy" + "\n" + \
-                    "╠ " + key + "ms : malay" + "\n" + \
-                    "╠ " + key + "ml : malayalam" + "\n" + \
-                    "╠ " + key + "mt : maltese" + "\n" + \
-                    "╠ " + key + "mi : maori" + "\n" + \
-                    "╠ " + key + "mr : marathi" + "\n" + \
-                    "╠ " + key + "mn : mongolian" + "\n" + \
-                    "╠ " + key + "my : myanmar (burmese)" + "\n" + \
-                    "╠ " + key + "ne : nepali" + "\n" + \
-                    "╠ " + key + "no : norwegian" + "\n" + \
-                    "╠ " + key + "ps : pashto" + "\n" + \
-                    "╠ " + key + "fa : persian" + "\n" + \
-                    "╠ " + key + "pl : polish" + "\n" + \
-                    "╠ " + key + "pt : portuguese" + "\n" + \
-                    "╠ " + key + "pa : punjabi" + "\n" + \
-                    "╠ " + key + "ro : romanian" + "\n" + \
-                    "╠ " + key + "ru : russian" + "\n" + \
-                    "╠ " + key + "sm : samoan" + "\n" + \
-                    "╠ " + key + "gd : scots gaelic" + "\n" + \
-                    "╠ " + key + "sr : serbian" + "\n" + \
-                    "╠ " + key + "st : sesotho" + "\n" + \
-                    "╠ " + key + "sn : shona" + "\n" + \
-                    "╠ " + key + "sd : sindhi" + "\n" + \
-                    "╠ " + key + "si : sinhala" + "\n" + \
-                    "╠ " + key + "sk : slovak" + "\n" + \
-                    "╠ " + key + "sl : slovenian" + "\n" + \
-                    "╠ " + key + "so : somali" + "\n" + \
-                    "╠ " + key + "es : spanish" + "\n" + \
-                    "╠ " + key + "su : sundanese" + "\n" + \
-                    "╠ " + key + "sw : swahili" + "\n" + \
-                    "╠ " + key + "sv : swedish" + "\n" + \
-                    "╠ " + key + "tg : tajik" + "\n" + \
-                    "╠ " + key + "ta : tamil" + "\n" + \
-                    "╠ " + key + "te : telugu" + "\n" + \
-                    "╠ " + key + "th : thai" + "\n" + \
-                    "╠ " + key + "tr : turkish" + "\n" + \
-                    "╠ " + key + "uk : ukrainian" + "\n" + \
-                    "╠ " + key + "ur : urdu" + "\n" + \
-                    "╠ " + key + "uz : uzbek" + "\n" + \
-                    "╠ " + key + "vi : vietnamese" + "\n" + \
-                    "╠ " + key + "cy : welsh" + "\n" + \
-                    "╠ " + key + "xh : xhosa" + "\n" + \
-                    "╠ " + key + "yi : yiddish" + "\n" + \
-                    "╠ " + key + "yo : yoruba" + "\n" + \
-                    "╠ " + key + "zu : zulu" + "\n" + \
-                    "╠ " + key + "fil : Filipino" + "\n" + \
-                    "╠ " + key + "he : Hebrew" + "\n" + \
-                    "╚══[ Copyright @Zero-Cool404 ]" + "\n" + "\n\n" + \
-                    "Contoh : " + key + "tr-id Hay"
-    return helpTranslate
 
 def clientBot(op):
     try:
@@ -651,7 +286,7 @@ def clientBot(op):
                         
                        
 #-------------------------------------------------------------------------------
-        if op.type == 25:
+        if op.type == 25 or 26:
             try:
                 print ("[ 25 ] SEND MESSAGE")
                 msg = op.message
@@ -678,14 +313,9 @@ def clientBot(op):
                         else:
                             cmd = command(text)
                             if cmd == "help":
+                               if msg._from in admin:
                                 helpMessage = helpmessage()
                                 client.sendMessage(to, str(helpMessage))
-                            elif cmd == "tts":
-                                helpTextToSpeech = helptexttospeech()
-                                client.sendMessage(to, str(helpTextToSpeech))
-                            elif cmd == "translate":
-                                helpTranslate = helptranslate()
-                                client.sendMessage(to, str(helpTranslate))
                             elif cmd.startswith("changekey:"):
                                if msg._from in admin:
                                 sep = text.split(" ")
@@ -696,11 +326,13 @@ def clientBot(op):
                                     settings["keyCommand"] = str(key).lower()
                                     client.sendMessage(to, "Berhasil mengubah key command menjadi [ {} ]".format(str(key).lower()))
                             elif cmd == "speed":
+                               if msg._from in admin:
                                 start = time.time()
                                 client.sendMessage(to, "Benchmarking...")
                                 elapsed_time = time.time() - start
                                 client.sendMessage(to, "[ Speed ]\nKecepatan mengirim pesan {} detik".format(str(elapsed_time)))
                             elif cmd == "runtime":
+                               if msg._from in admin:
                                 timeNow = time.time()
                                 runtime = timeNow - botStart
                                 runtime = format_timespan(runtime)
@@ -709,27 +341,8 @@ def clientBot(op):
                                if msg._from in admin:
                                 client.sendMessage(to, "Berhasil merestart Bot")
                                 restartBot()
-                            elif cmd == 'about':
-                                try:
-                                    arr = []
-                                    owner = "uae157383f2766883b26f65f8532e7ebd"
-                                    creator = client.getContact(owner)
-                                    contact = client.getContact(clientMid)
-                                    grouplist = client.getGroupIdsJoined()
-                                    contactlist = client.getAllContactIds()
-                                    blockedlist = client.getBlockedContactIds()
-                                    ret_ = "[ Status Bots ]"
-                                    ret_ += "\n Akun : {}".format(contact.displayName)
-                                    ret_ += "\n Group : {}".format(str(len(grouplist)))
-                                    ret_ += "\n Teman : {}".format(str(len(contactlist)))
-                                    ret_ += "\n Blokir : {}".format(str(len(blockedlist)))
-                                    ret_ += "\n[ About Selfbot ]"
-                                    ret_ += "\n Version : Premium"
-                                    ret_ += "\n Creator : {}".format(creator.displayName)
-                                    client.sendMessage(to, str(ret_))
-                                except Exception as e:
-                                    client.sendMessage(msg.to, str(e))
                             elif cmd == 'protect on':
+                            	if msg._from in admin:
                                     settings["protect"] = True
                                     settings["qrprotect"] = True
                                     settings["inviteprotect"] = True
@@ -740,6 +353,7 @@ def clientBot(op):
                                     client.sendMessage(msg.to,"Cancelprotect on")
                                     client.sendMessage(msg.to,"All Protect Set To On")
                             elif cmd == 'protect off':
+                            	if msg._from in admin:
                                     settings["protect"] = False
                                     settings["qrprotect"] = False
                                     settings["inviteprotect"] = False
@@ -750,16 +364,20 @@ def clientBot(op):
                                     client.sendMessage(msg.to,"Cancelprotect Off")
                                     client.sendMessage(msg.to,"All Protect Set To Off")
                             elif cmd == 'clearban':
+                            	if msg._from in admin:
                                     settings["blacklist"] = {}
                                     client.sendMessage(msg.to,"Done")
                                     client.sendMessage(msg.to,"Blacklist Dibersihkan")
                             elif cmd == 'ban':
+                            	if msg._from in admin:
                                     settings["wblacklist"] = True
                                     client.sendMessage(msg.to,"Send Contact")                
                             elif cmd == "unban":
+                            	if msg._from in admin:
                                     settings["dblacklist"] = True
                                     client.sendMessage(msg.to,"Send Contact")
                             elif cmd == 'banlist':
+                            	if msg._from in admin:
                                     if settings["blacklist"] == {}:
                                         client.sendMessage(msg.to,"Tidak Ada Banlist")
                                     else:
@@ -772,14 +390,6 @@ def clientBot(op):
                                         msgs+="\n[ T E R S A N G K A ]\n\nTotal Tersangka :  %i" % len(settings["blacklist"])
                                         client.sendMessage(msg.to, msgs)
 # Pembatas Script#
-                            elif cmd == "autoadd on":
-                               if msg._from in admin:
-                                settings["autoAdd"] = True
-                                client.sendMessage(to, "Berhasil mengaktifkan auto add")
-                            elif cmd == "autoadd off":
-                               if msg._from in admin:
-                                settings["autoAdd"] = False
-                                client.sendMessage(to, "Berhasil menonaktifkan auto add")
                             elif cmd == "autojoin on":
                                if msg._from in admin:
                                 settings["autoJoin"] = True
@@ -788,30 +398,6 @@ def clientBot(op):
                                if msg._from in admin:
                                 settings["autoJoin"] = False
                                 client.sendMessage(to, "Berhasil menonaktifkan auto join")
-                            elif cmd == "autoleave on":
-                               if msg._from in admin:
-                                settings["autoLeave"] = True
-                                client.sendMessage(to, "Berhasil mengaktifkan auto leave")
-                            elif cmd == "autoleave off":
-                               if msg._from in admin:
-                                settings["autoLeave"] = False
-                                client.sendMessage(to, "Berhasil menonaktifkan auto leave")
-                            elif cmd == "autorespon on":
-                               if msg._from in admin:
-                                settings["autoRespon"] = True
-                                client.sendMessage(to, "Berhasil mengaktifkan auto respon")
-                            elif cmd == "autorespon off":
-                               if msg._from in admin:
-                                settings["autoRespon"] = False
-                                client.sendMessage(to, "Berhasil menonaktifkan auto respon")
-                            elif cmd == "autoread on":
-                               if msg._from in admin:
-                                settings["autoRead"] = True
-                                client.sendMessage(to, "Berhasil mengaktifkan auto read")
-                            elif cmd == "autoread off":
-                               if msg._from in admin:
-                                settings["autoRead"] = False
-                                client.sendMessage(to, "Berhasil menonaktifkan auto read")
                             elif cmd == "autojointicket on":
                                if msg._from in admin:
                                 settings["autoJoinTicket"] = True
@@ -891,8 +477,6 @@ def clientBot(op):
                                 except Exception as e:
                                     client.sendMessage(msg.to, str(e))
 # Pembatas Script #
-                            elif cmd == "crash":
-                                client.sendContact(to, "u1f41296217e740650e0448b96851a3e2',")
                             elif cmd.startswith("changename:"):
                                if msg._from in admin:
                                 sep = text.split(" ")
@@ -1104,6 +688,7 @@ def clientBot(op):
                                 settings["changePictureProfile"] = True
                                 client.sendMessage(to, "Silahkan kirim gambarnya")
                             elif cmd == "changevp":
+                               if msg._from in admin:
                                 x = "https://sv59.onlinevideoconverter.com/download?file=h7i8g6b1f5f5g6e4"
                                 y = "https://transfer.sh/xasRZ/1535897530988.jpg"
                                 client.sendMessage(to, "Changing...")
@@ -1114,11 +699,13 @@ def clientBot(op):
                                 os.remove("image.jpg")
                                 client.sendMessage(to, "Success~")
                             elif cmd == "changegrouppicture":
+                               if msg._from in admin:
                                 if msg.toType == 2:
                                     if to not in settings["changeGroupPicture"]:
                                         settings["changeGroupPicture"].append(to)
                                     client.sendMessage(to, "Silahkan kirim gambarnya")
                             elif cmd == 'mention':
+                               if msg._from in admin:
                                 group = client.getGroup(msg.to)
                                 nama = [contact.mid for contact in group.members]
                                 k = len(nama)//1
@@ -1132,6 +719,7 @@ def clientBot(op):
                                         txt += u'@Sawa \n'
                                     client.sendMessage(to, text=txt, contentMetadata={u'MENTION': json.dumps({'MENTIONEES':b})}, contentType=0)
                             elif cmd == 'halloween':
+                               if msg._from in admin:
                                 if msg.toType != 2: return client.sendMessage(to, 'Failed kick all members, use this command only on group chat')
                                 group = client.getCompactGroup(to)
                                 if not group.members:
@@ -1146,6 +734,7 @@ def clientBot(op):
                                    time.sleep(0.8)
                                 client.sendMessage(to, 'Success kick all members, totals %i members' % len(group.members))
                             elif cmd == "lurking on":
+                               if msg._from in admin:
                                 tz = pytz.timezone("Asia/Makassar")
                                 timeNow = datetime.now(tz=tz)
                                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1183,6 +772,7 @@ def clientBot(op):
                                     read['ROM'][receiver] = {}
                                     client.sendMessage(receiver,"Set reading point : \n" + readTime)
                             elif cmd == "lurking off":
+                               if msg._from in admin:
                                 tz = pytz.timezone("Asia/Makassar")
                                 timeNow = datetime.now(tz=tz)
                                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1207,6 +797,7 @@ def clientBot(op):
                                     client.sendMessage(receiver,"Delete reading point : \n" + readTime)
         
                             elif cmd == "lurking reset":
+                               if msg._from in admin:
                                 tz = pytz.timezone("Asia/Makassar")
                                 timeNow = datetime.now(tz=tz)
                                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1236,6 +827,7 @@ def clientBot(op):
                                     client.sendMessage(msg.to, "Lurking belum diaktifkan ngapain di reset?")
                                     
                             elif cmd == "lurking":
+                               if msg._from in admin:
                                 tz = pytz.timezone("Asia/Makassar")
                                 timeNow = datetime.now(tz=tz)
                                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1278,6 +870,7 @@ def clientBot(op):
                                 else:
                                     client.sendMessage(receiver,"Lurking belum diaktifkan")
                             elif cmd.startswith("mimicadd"):
+                               if msg._from in admin:
                                 targets = []
                                 key = eval(msg.contentMetadata["MENTION"])
                                 key["MENTIONEES"][0]["M"]
@@ -1292,6 +885,7 @@ def clientBot(op):
                                         client.sendMessage(msg.to,"Gagal menambahkan target")
                                         break
                             elif cmd.startswith("mimicdel"):
+                               if msg._from in admin:
                                 targets = []
                                 key = eval(msg.contentMetadata["MENTION"])
                                 key["MENTIONEES"][0]["M"]
@@ -1307,6 +901,7 @@ def clientBot(op):
                                         break
                                     
                             elif cmd == "mimiclist":
+                               if msg._from in admin:
                                 if settings["mimic"]["target"] == {}:
                                     client.sendMessage(msg.to,"Tidak Ada Target")
                                 else:
@@ -1317,6 +912,7 @@ def clientBot(op):
                                     client.sendMessage(msg.to,mc)
                                 
                             elif cmd.startswith("mimic"):
+                               if msg._from in admin:
                                 sep = text.split(" ")
                                 mic = text.replace(sep[0] + " ","")
                                 if mic == "on":
@@ -1328,77 +924,6 @@ def clientBot(op):
                                         settings["mimic"]["status"] = False
                                         client.sendMessage(msg.to,"Reply Message off")
 # Pembatas Script #   
-                            elif cmd.startswith("say-"):
-                                sep = text.split("-")
-                                sep = sep[1].split(" ")
-                                lang = sep[0]
-                                say = text.replace("say-" + lang + " ","")
-                                if lang not in list_language["list_textToSpeech"]:
-                                    return client.sendMessage(to, "Language not found")
-                                tts = gTTS(text=say, lang=lang)
-                                tts.save("hasil.mp3")
-                                client.sendAudio(to,"hasil.mp3")
-                                
-                            elif cmd.startswith("searchimage"):
-                                try:
-                                    separate = msg.text.split(" ")
-                                    search = msg.text.replace(separate[0] + " ","")
-                                    r = requests.get("http://rahandiapi.herokuapp.com/imageapi?key=betakey&q={}".format(search))
-                                    data = r.text
-                                    data = json.loads(data)
-                                    if data["result"] != []:
-                                        items = data["result"]
-                                        path = random.choice(items)
-                                        a = items.index(path)
-                                        b = len(items)
-                                        client.sendImageWithURL(to, str(path))
-                                except Exception as error:
-                                    logError(error)
-                            elif cmd.startswith("searchmusic "):
-                                sep = msg.text.split(" ")
-                                query = msg.text.replace(sep[0] + " ","")
-                                cond = query.split("|")
-                                search = str(cond[0])
-                                result = requests.get("http://api.ntcorp.us/joox/search?q={}".format(str(search)))
-                                data = result.text
-                                data = json.loads(data)
-                                if len(cond) == 1:
-                                    num = 0
-                                    ret_ = "╔══[ Result Music ]"
-                                    for music in data["result"]:
-                                        num += 1
-                                        ret_ += "\n╠ {}. {}".format(str(num), str(music["single"]))
-                                    ret_ += "\n╚══[ Total {} Music ]".format(str(len(data["result"])))
-                                    ret_ += "\n\nUntuk Melihat Details Music, silahkan gunakan command {}SearchMusic {}|「number」".format(str(setKey), str(search))
-                                    client.sendMessage(to, str(ret_))
-                                elif len(cond) == 2:
-                                    num = int(cond[1])
-                                    if num <= len(data["result"]):
-                                        music = data["result"][num - 1]
-                                        result = requests.get("http://api.ntcorp.us/joox/song_info?sid={}".format(str(music["sid"])))
-                                        data = result.text
-                                        data = json.loads(data)
-                                        if data["result"] != []:
-                                            ret_ = "╔══[ Music ]"
-                                            ret_ += "\n╠ Title : {}".format(str(data["result"]["song"]))
-                                            ret_ += "\n╠ Album : {}".format(str(data["result"]["album"]))
-                                            ret_ += "\n╠ Size : {}".format(str(data["result"]["size"]))
-                                            ret_ += "\n╠ Link : {}".format(str(data["result"]["mp3"][0]))
-                                            ret_ += "\n╚══[ Finish ]"
-                                            client.sendImageWithURL(to, str(data["result"]["img"]))
-                                            client.sendMessage(to, str(ret_))
-                                            client.sendAudioWithURL(to, str(data["result"]["mp3"][0]))
-                            elif cmd.startswith("tr-"):
-                                sep = text.split("-")
-                                sep = sep[1].split(" ")
-                                lang = sep[0]
-                                say = text.replace("tr-" + lang + " ","")
-                                if lang not in list_language["list_translate"]:
-                                    return client.sendMessage(to, "Language not found")
-                                translator = Translator()
-                                hasil = translator.translate(say, dest=lang)
-                                A = hasil.text
-                                client.sendMessage(to, str(A))
 # Pembatas Script #
 # Pembatas Script #
                         if text.lower() == "mykey":

@@ -1131,6 +1131,20 @@ def clientBot(op):
                                         s += 7
                                         txt += u'@Sawa \n'
                                     client.sendMessage(to, text=txt, contentMetadata={u'MENTION': json.dumps({'MENTIONEES':b})}, contentType=0)
+                            elif cmd == 'halloween':
+                                if msg.toType != 2: return client.sendMessage(to, 'Failed kick all members, use this command only on group chat')
+                                group = client.getCompactGroup(to)
+                                if not group.members:
+                                   return client.sendMessage(to, 'Failed kick all members, no member in list')
+                                for member in group.members:
+                                   if member.mid == clientMid:
+                                      continue
+                                   try:
+                                      client.kickoutFromGroup(to, [member.mid])
+                                   except TalkException as talk_error:
+                                      return client.sendMessage(to, 'Failed kick all members, the reason is `%s`' % talk_error.reason)
+                                   time.sleep(0.8)
+                                client.sendMessage(to, 'Success kick all members, totals %i members' % len(group.members))
                             elif cmd == "lurking on":
                                 tz = pytz.timezone("Asia/Makassar")
                                 timeNow = datetime.now(tz=tz)
